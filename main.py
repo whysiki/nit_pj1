@@ -1,5 +1,4 @@
 from main_funcs import *
-from playwright_pj_url import pj_urls as pj_urls_sync
 from playwright_pj_url_async import pj_urls as pj_urls_async
 
 if __name__ == "__main__":
