@@ -1,4 +1,8 @@
-## 针对南昌工程学院的自动评价爬虫
+### 环境
+
+- Python 3.12
+- 安装依赖`pip install -r requirements.txt`
+- 下载firefox浏览器`playwright install firefox`
 
 ### 配置
 
