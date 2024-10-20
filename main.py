@@ -5,7 +5,7 @@ from playwright_pj_url_async import pj_urls as pj_urls_async
 if __name__ == "__main__":
     # 设置学期
     semester = "2024-2025-1"
-    aim_status = "全部"
+    aim_status = None
     sigle_pj_urls = get_single_pj_urls(semester=semester, aim_status=aim_status)
     if sigle_pj_urls:
         # pj_urls_async(sigle_pj_urls)
