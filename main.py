@@ -7,6 +7,7 @@ if __name__ == "__main__":
     semester = "2024-2025-1"
     aim_status = None
     sigle_pj_urls = get_single_pj_urls(semester=semester, aim_status=aim_status)  # type: ignore
+    asyncio.run(pj_urls_async(headless=False))
     if sigle_pj_urls:
         # pj_urls_async(sigle_pj_urls)
         asyncio.run(pj_urls_async(headless=False))

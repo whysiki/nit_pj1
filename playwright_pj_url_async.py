@@ -10,6 +10,7 @@ import re
 from playwright_stealth import stealth_async
 from pathlib import Path
 import asyncio
+from tqdm.asyncio import tqdm as atqdm
 
 # from undetected_chromedriver import Chrome, ChromeOptions
 import json
@@ -206,10 +207,9 @@ async def pj_urls(headless: bool) -> None:
                                         "div.lecture-evaluation-header > h2"
                                     )
                                     nev_url = page.url
-                                    # print(f"nev_url: {nev_url}")
+                                    print(f"nev_url: {nev_url}")
+                                    # print(f"{unquote_urlparams(nev_url)}")
                                     single_urls.append(nev_url)
-                                    # await run_single(nev_url, page)
-                                    # print(f"return to original_url: {page.url}")
                                 else:
                                     print("No pjbutton")
                             finally:
@@ -218,7 +218,7 @@ async def pj_urls(headless: bool) -> None:
                         tasks.append(task(i, (await context.new_page())))
                 else:
                     print("No pjbuttons")
-            await asyncio.gather(*tasks)
+            await atqdm.gather(*tasks)
             await context.storage_state(path=state_path)
 
             # 关闭所有页面
@@ -227,6 +227,6 @@ async def pj_urls(headless: bool) -> None:
                     await page_.close()
 
             # 评教
-            await asyncio.gather(
+            await atqdm.gather(
                 *[run_single(single_url, page) for single_url in single_urls]
             )
